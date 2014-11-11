@@ -65,6 +65,7 @@ class PaymentController extends Controller
     }
     public function resultCallback($merchant, $nInvId, $nOutSum, $shp)
     {
+    	// Нужно проверять что статус был "STATUS_SUCCESS"
         $this->loadModel($nInvId)->updateAttributes(['status' => Invoice::STATUS_SUCCESS]);
         return 'Ok';
     }
